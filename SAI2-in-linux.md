@@ -1,4 +1,4 @@
-Some issues with SAI2 in Linux and how to get around them:
+Some issues with Paint Tool SAI2 in Linux and how to get around them:
 
 ## My system configuration:
 - NixOS 23.11
