@@ -17,7 +17,8 @@ This also causes SAI to become unusable and you likely have to restart the progr
 ---
 ### Drawing suddenly shows a "Discharge failed, Fatal" error or something like that:
 It's not actually fatal, but it's still annoying.
-- Solution: In SAI, go to "Other > Options > History and Recovery" and turn off "To suppress memory usage..."
+- Solution: In SAI, go to "Other > Options > History and Recovery" and turn off "To suppress memory usage...".
+  Note that this means file recovery doesn't work!
 - Technical: SAI seems to have an issue with Wine's file system, in this particular case.
 
 ---
@@ -43,6 +44,11 @@ and this clashes with your desktop environment's window frames.
 ### The pen cursor is STILL offset by a fixed distance, but only when SAI is fullscreen:
 Again, it's caused by your window system. SAI's window geometry gets messed up when you hit the fullscreen button.
 - Solution: Make SAI windowed and stretch its frame to the extents of your screen.
+
+---
+### Restarting your desktop environment makes SAI crash:
+Like if you run `plasmashell --replace`, for example.
+- Solution: Save your work and close SAI before restarting your desktop environment.
 
 ---
 ## Trapdoor
