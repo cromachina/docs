@@ -27,6 +27,12 @@ This is most likely caused by the linux-wacom drivers that ship with your distro
 - Technical: Linux-wacom drivers clash with SAI in some odd way, but they work fine in other apps like Krita.
 
 ---
+### You open SAI while using OpenTabletDriver and it immediately has an error about WinTab API:
+Pressure and other pen functions also seem to not work.
+- Solution: Tap your pen on the tablet and reopen SAI.
+- Technical: OpenTabletDriver seems to lazy-load tablets and they do not activate until a tablet event happens.
+
+---
 ### The pen cursor seems to be offset a fixed distance from the pen:
 This is caused by your window system and desktop environment. SAI wants to draw its own titlebar and frame,
 and this clashes with your desktop environment's window frames.
