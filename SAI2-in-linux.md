@@ -22,7 +22,7 @@ It's not actually fatal, but it's still annoying.
 - Technical: SAI seems to have an issue with Wine's file system, in this particular case.
 
 ---
-### The pen cursor seems to move away from the pen as you move it around:
+### The drawing cursor in SAI seems to move away from the system mouse cursor position as you move it around:
 This is most likely caused by the linux-wacom drivers that ship with your distro.
 - Solution: Try using OpenTabletDriver instead.
 - Technical: Linux-wacom drivers clash with SAI in some odd way, but they work fine in other apps like Krita.
@@ -34,16 +34,21 @@ Pressure and other pen functions also seem to not work.
 - Technical: OpenTabletDriver seems to lazy-load tablets and they do not activate until a tablet event happens.
 
 ---
-### The pen cursor seems to be offset a fixed distance from the pen:
+### The drawing cursor seems to be offset a fixed distance from the system mouse cursor:
 This is caused by your window system and desktop environment. SAI wants to draw its own titlebar and frame,
 and this clashes with your desktop environment's window frames.
 - Solution: See if you can disable the desktop environment's titlebar and frame for SAI. For example,
   in KDE Plasma, you can right click on the titlebar and select "More Actions > No Titlebar and Frame".
 
 ---
-### The pen cursor is STILL offset by a fixed distance, but only when SAI is fullscreen:
+### The drawing cursor is STILL offset by a fixed distance from the system mouse cursor, but only when SAI is fullscreen:
 Again, it's caused by your window system. SAI's window geometry gets messed up when you hit the fullscreen button.
 - Solution: Make SAI windowed and stretch its frame to the extents of your screen.
+
+---
+### The mouse cursor (not the drawing cursor) has some offset from the pen's physical position:
+This is most noticable when using a screen tablet. Now that all of the weird window geometry stuff is resolved, your tablet area needs to be calibrated.
+- Solution: In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
 
 ---
 ### Restarting your desktop environment makes SAI crash:
