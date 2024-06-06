@@ -56,7 +56,25 @@ Like if you run `plasmashell --replace`, for example.
 - Solution: Save your work and close SAI before restarting your desktop environment.
 
 ---
-## Trapdoor
+### Systemd shutdown or reboot is delayed with "A stop job is running for User Manager..."
+Sometimes running programs like SAI with wine leaves lingering wine service processes.
+These seem to delay shutdown with systemd because it asks them to SIGTERM and they hang waiting for something.
+You can fix this with a systemd shutdown script that just kills the lingering processes, for example I add this to my NixOS config:
+```nix
+  systemd.services."wine-shutdown" = {
+    enable = true;
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "${pkgs.procps}/bin/pkill -9 .exe";
+    };
+    before = [ "shutdown.target" "reboot.target" "halt.target" ];
+    wantedBy = [ "multi-user.target" ];
+  };
+```
+
+---
+### Trapdoor
 If you still have strange, unresolvable issues, you might have better luck running SAI inside of a Windows VM.
 You will have to use USB redirection of the VM controller to give your tablet to the VM, otherwise pressure and tilt will not work.
 You must also install either Wacom drivers or OpenTabletDriver inside of the VM.
