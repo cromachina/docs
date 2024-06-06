@@ -1,11 +1,11 @@
 Some issues with Paint Tool SAI2 in Linux and how to get around them:
 
 ## My system configuration:
-- NixOS 23.11
+- NixOS Unstable (24.11)
 - SAIv2 Preview.2024.04.10
 - Wine 9.6 (nixos-unstable)
 - OpenTabletDriver 0.6.4 (Built from source to add a new config)
-- Wacom Cintiq 22HD (very old tablet from 2024)
+- Wacom Cintiq 22HD (very old tablet from 2014)
 
 ## Issues:
 
