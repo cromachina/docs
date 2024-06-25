@@ -9,16 +9,25 @@ Some issues with Paint Tool SAI2 in Linux and how to get around them:
 
 ## Issues:
 
+### Do NOT save a file you are working on if you see lots of errors pop up:
+There is a high chance that you will create a corrupted file and lose your work.
+Try to save the work to a new file, and close and reopen SAI. If the new file is not corrupted,
+then that's great and you can continue work. If it is corrupted, well at least your old save should
+still be fine and hopefully you only lost minutes, instead of a day.
+
 ### Simultaneously opening a bunch of files sometimes gives lots of errors:
 This also causes SAI to become unusable and you likely have to restart the program.
-- Solution: Opening each file one at a time seems to mitigate this issue.
+- Solution: Opening each file one at a time seems to mitigate this issue, but sometimes it still happens.
 - Technical: Something very bad happens in Wine's implementation of VirtualAlloc. Race condition?
+
+### Making lots of custom scatter brush types may cause the same issue as above in a different way:
+You may have to avoid using this feature if you see lots of errors when you have many scatter brushes saved.
 
 ---
 ### Drawing suddenly shows a "Discharge failed, Fatal" error or something like that:
 It's not actually fatal, but it's still annoying.
 - Solution: In SAI, go to "Other > Options > History and Recovery" and turn off "To suppress memory usage...".
-  Note that this means file recovery doesn't work!
+  Note that this means file recovery doesn't work! Back up your files manually or with periodic copy job!!!
 - Technical: SAI seems to have an issue with Wine's file system, in this particular case.
 
 ---
