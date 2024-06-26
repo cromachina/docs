@@ -14,17 +14,20 @@ Note that there are a limited number of times you can acquire a license update f
 so backup your previous license file before you want to change wine versions. SAI wants to use your hardware
 identity to determine your license, however Wine's internals changing can cause this to also change.
 
+---
 ### Do NOT save a file you are working on if you see lots of errors pop up:
 There is a high chance that you will create a corrupted file and lose your work.
 Try to save the work to a new file, and close and reopen SAI. If the new file is not corrupted,
 then that's great and you can continue work. If it is corrupted, well at least your old save should
 still be fine and hopefully you only lost minutes, instead of a day.
 
+---
 ### Simultaneously opening a bunch of files sometimes gives lots of errors:
 This also causes SAI to become unusable and you likely have to restart the program.
 - Solution: Opening each file one at a time seems to mitigate this issue, but sometimes it still happens.
 - Technical: Something very bad happens in Wine's implementation of VirtualAlloc. Race condition?
 
+---
 ### Making lots of custom scatter brush types may cause the same issue as above in a different way:
 You may have to avoid using this feature if you see lots of errors when you have many scatter brushes saved.
 
@@ -86,8 +89,6 @@ You can fix this with a systemd shutdown script that just kills the lingering pr
     wantedBy = [ "multi-user.target" ];
   };
 ```
-
----
 ### Trapdoor
 If you still have strange, unresolvable issues, you might have better luck running SAI inside of a Windows VM.
 You will have to use USB redirection of the VM controller to give your tablet to the VM, otherwise pressure and tilt will not work.
