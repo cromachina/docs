@@ -9,6 +9,11 @@ Some issues with Paint Tool SAI2 in Linux and how to get around them:
 
 ## Issues:
 
+### Updating Wine may cause your license to become invalid:
+Note that there are a limited number of times you can acquire a license update for SAI in a month,
+so backup your previous license file before you want to change wine versions. SAI wants to use your hardware
+identity to determine your license, however Wine's internals changing can cause this to also change.
+
 ### Do NOT save a file you are working on if you see lots of errors pop up:
 There is a high chance that you will create a corrupted file and lose your work.
 Try to save the work to a new file, and close and reopen SAI. If the new file is not corrupted,
