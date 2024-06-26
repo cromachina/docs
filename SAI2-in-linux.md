@@ -3,7 +3,7 @@ Some issues with Paint Tool SAI2 in Linux and how to get around them:
 ## My system configuration:
 - NixOS Unstable (24.11)
 - SAIv2 Preview.2024.04.10
-- Wine 9.6 (nixos-unstable)
+- Wine 9.11 (nixos-unstable)
 - OpenTabletDriver 0.6.4 (Built from source to add a new config)
 - Wacom Cintiq 22HD (very old tablet from 2014)
 
@@ -30,6 +30,7 @@ This also causes SAI to become unusable and you likely have to restart the progr
 ---
 ### Making lots of custom scatter brush types may cause the same issue as above in a different way:
 You may have to avoid using this feature if you see lots of errors when you have many scatter brushes saved.
+- Newer versions of Wine might mitigate some of these issues related to SAI opening many files at once.
 
 ---
 ### Drawing suddenly shows a "Discharge failed, Fatal" error or something like that:
