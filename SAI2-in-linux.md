@@ -89,6 +89,8 @@ You can fix this with a systemd shutdown script that just kills the lingering pr
     wantedBy = [ "multi-user.target" ];
   };
 ```
+
+---
 ### Trapdoor
 If you still have strange, unresolvable issues, you might have better luck running SAI inside of a Windows VM.
 You will have to use USB redirection of the VM controller to give your tablet to the VM, otherwise pressure and tilt will not work.
