@@ -12,8 +12,8 @@ https://github.com/TibixDev/sai2-guide
 
 ### Updating Wine may cause your license to become invalid:
 Note that there are a limited number of times you can acquire a license update for SAI in a month,
-so backup your previous license file before you want to change wine versions. SAI wants to use your hardware
-identity to determine your license, however Wine's internals changing can cause this to also change.
+so backup your previous license file before you want to change Wine versions, or the runner version in Bottles.
+SAI wants to use your hardware identity to determine your license, however Wine's internals changing may cause this to also change.
 
 ### Do NOT save a file you are working on if you see lots of errors pop up:
 There is a high chance that you will create a corrupted file and lose your work.
@@ -25,7 +25,7 @@ still be fine and hopefully you only lost minutes, instead of days.
 This also causes SAI to become unusable and you likely have to restart the program.
 - Solution: Opening each file one at a time seems to mitigate this issue, but sometimes it still happens.
   This may also be mitigated by using different versions of Wine (try the Bottles suggestion above).
-- Technical: Something very bad happens in Wine's implementation of VirtualAlloc. Race condition?
+- Reason: Something very bad happens in Wine's implementation of VirtualAlloc. Race condition?
 
 ### Making lots of custom scatter brush types may cause the same issue as above in a different way:
 You may have to avoid using this feature if you see lots of errors when you have many scatter brushes saved.
@@ -35,18 +35,23 @@ You may have to avoid using this feature if you see lots of errors when you have
 It's not actually fatal, but it's still annoying.
 - Solution: In SAI, go to "Other > Options > History and Recovery" and turn off "To suppress memory usage...".
   Note that this means file recovery doesn't work! Back up your files manually or with periodic copy job!!!
-- Technical: SAI seems to have an issue with Wine's file system, in this particular case. File recovery will
+  I have a script that is meant to capture `sai2` files as they are saved and back up a few at a time to another location.
+  You'll have to change the paths to be relevant for your own system:
+  https://github.com/cromachina/art-scripts/blob/main/auto_backup.py
+- Reason: SAI seems to have an issue with Wine's file system, in this particular case. File recovery within SAI will
   not work either way.
 
 ### The drawing cursor in SAI seems to move away from the system mouse cursor position as you move it around:
 This is most likely caused by the linux-wacom drivers that ship with your distro.
 - Solution: Try using OpenTabletDriver instead.
-- Technical: Linux-wacom drivers clash with SAI in some odd way, but they work fine in other apps like Krita.
-  This may also be a consequence of desktop environment issues like below, or even multi-monitor setups.
+- Reason: Linux-wacom drivers clash with SAI in some odd way, but they work fine in other apps like Krita.
+  This may also be a consequence of desktop environment issues like below, or even multi-monitor setups, but I
+  can't get linux-wacom drivers to work right in SAI even with a virtual desktop.
 
 ### You open SAI while using OpenTabletDriver and it immediately has an error about WinTab API:
 Pressure and other pen functions also seem to not work.
 - Solution: Tap your pen on the tablet and reopen SAI.
+- Reason: OpenTabletDriver lazy loads the tablet and it does not seem to start until the first tablet packet is received.
 
 # Desktop environment issues
 
@@ -64,18 +69,18 @@ This is caused by your window system and desktop environment. SAI wants to draw 
 and this clashes with your desktop environment's window frames.
 - Solution: See if you can disable the desktop environment's titlebar and frame for SAI. For example,
   in KDE Plasma, you can right click on the titlebar and select "More Actions > No Titlebar and Frame".
-  You can also disable decorations in the wine config tool.
+  You can also disable decorations in the wine config tool. Alternatively run it in a virtual desktop like above.
 
 ### The drawing cursor is STILL offset by a fixed distance from the system mouse cursor, but only when SAI is fullscreen:
 Again, it's caused by your window system. SAI's window geometry gets messed up when you hit the fullscreen button.
-- Solution: Make SAI windowed and stretch its frame to the extents of your screen.
+- Solution: Make SAI windowed and stretch its frame to the extents of your screen, or run in a virtual desktop.
 
 ### The mouse cursor (not the drawing cursor) has some offset from the pen's physical position:
 This is most noticable when using a screen tablet. Now that all of the weird window geometry stuff is resolved, your tablet area needs to be calibrated.
 - Solution: In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
 
 ### Restarting your desktop environment makes SAI crash:
-Like if you run `plasmashell --replace`, for example.
+Like if you run `plasmashell --replace` because your shell crashed for whatever reason.
 - Solution: Save your work and close SAI before restarting your desktop environment, or run SAI in a virtual desktop like above (it won't crash in this case).
 
 # Wine systemd issues
