@@ -1,0 +1,35 @@
+Running Design Doll in Linux
+
+## My system configuration:
+- NixOS Unstable
+- Bottles (to configure Wine)
+- Design Doll 6.0.0.0
+
+# Bottle configuration
+- Create a new Bottle with the `Custom` Environment
+  - Set the architecture to `win32` (otherwise dotnet stuff may not run correctly)
+- After finishing the Create step, under Options -> Settings:
+  - Components (you may have to install some of these in Bottles main preferences)
+    - Runner: `caffe-9.7`
+    - DXVK: `dxvk-2.5.2`
+- Under Options -> Dependencies, install:
+  - dotnet40
+  - dotnet45
+  - dotnet452
+  - dotnet48
+  - d3dx9
+  - d3dcompiler_47
+
+# Install Design Doll
+- Run the Design Doll Launcher from the Bottle
+- If after running the actual Design Doll application, you get an error like a registry key needs to be set, then one of the dotnet installer manifests did not set it correctly:
+  - Run the registry editor for the Bottle: Under Tools -> Registry Editor
+  - Under `HKEY_LOCAL_MACHINE/Software/Microsoft/.NETFramework` add a new `String Value` called `InstallRoot` and set its data to the dotnet install location `C:\windows\Microsoft.NET\Framework`
+  - This probably happened to me because I was messing around with Wine Mono (don't install this in the Bottle, it doesn't work with Design Doll).
+ 
+# Other issues
+- Some popup windows may render incorrectly, or just black (usually the exit-save confirmation popup)
+  - Running in a Virtual Desktop seems to alleviate these kinds of issues.
+
+- Sometimes there is a crash on exit with a COM exception.
+  - This error seems to be harmless.
