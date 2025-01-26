@@ -39,11 +39,11 @@ Running Clip Studio Paint in Linux
 - You suddenly cannot click on anything and it seems like Clip Studio Paint is frozen:
   - Most likely you have a modal popup open (like Manage Fonts) and it's behind the main window (because you clicked on the main window after opening it). You should still be able to move the main window out of the way to close the popup.
 
-- The mouse cursor has some constant offset from the pen's physical position. This is most noticable when using a screen tablet. Your tablet area needs to be calibrated.
-  - Solution: In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
+- The mouse cursor has some constant offset from the pen's physical position. This is most noticable when using a screen tablet.
+  - Your tablet area needs to be calibrated. In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
 
 - Resizing UI panels is a bit laggy.
-  - I'm not sure what the issue is (probably Wine overhead), but CSP does have performance issues in general (since CSP version 2 is a single threaded program without any async UI).
+  - I'm not sure what the issue is (probably Wine overhead), but CSP does have performance issues in general (since CSP version 2 is a single threaded program without any async UI). Maybe it works better in CSP 3, but I haven't tested that version myself.
 
 - Switching brushes with hotkeys is laggy.
   - Same problem as above, but you can mitigate it by hiding the brush and tool panels while you work (click the chevron icons `>` or `>>`). Hiding the panels prevents a UI refresh, which is the source of the lag.
