@@ -37,3 +37,6 @@ Running Clip Studio Paint 2.0.6 in Linux
    
 - You suddenly cannot click on anything and it seems like Clip Studio Paint is frozen:
   - Most likely you have a modal popup open (like Manage Fonts) and it's behind the main window (because you clicked on the main window after opening it). You should still be able to move the main window out of the way to close the popup.
+
+- The mouse cursor has some constant offset from the pen's physical position. This is most noticable when using a screen tablet. Your tablet area needs to be calibrated.
+  - Solution: In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
