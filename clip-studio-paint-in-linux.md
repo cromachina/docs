@@ -1,10 +1,11 @@
-Running Clip Studio Paint 2.0.6 in Linux
+Running Clip Studio Paint in Linux
 
-## My system configuration:
-- NixOS Unstable
+## Version
+- Clip Studio Paint Ex (64 bit) Version 2.0.6
+
+## Other software to install in Linux
 - Bottles (to configure Wine)
 - OpenTabletDriver (recommended for pen pressure support)
-- Clip Studio Paint Ex (64 bit) Version 2.0.6
 
 ## Bottle configuration
 - Create a new Bottle with the `Application` environment preset
