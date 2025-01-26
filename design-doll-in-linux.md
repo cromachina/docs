@@ -1,9 +1,10 @@
 Running Design Doll in Linux
 
-## My system configuration:
-- NixOS Unstable
-- Bottles (to configure Wine)
+## Version
 - Design Doll 6.0.0.0
+
+## Other software to install in Linux
+- Bottles (to configure Wine)
 
 ## Bottle configuration
 - Create a new Bottle with the `Custom` Environment
