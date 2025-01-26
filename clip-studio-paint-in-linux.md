@@ -44,3 +44,6 @@ Running Clip Studio Paint in Linux
 
 - Resizing UI panels is a bit laggy.
   - I'm not sure what the issue is (probably Wine overhead), but CSP does have performance issues in general (since CSP version 2 is a single threaded program without any async UI).
+
+- Switching brushes with hotkeys is laggy.
+  - Same problem as above, but you can mitigate it by hiding the brush and tool panels while you work (click the chevron icons `>` or `>>`). Hiding the panels prevents a UI refresh, which is the source of the lag.
