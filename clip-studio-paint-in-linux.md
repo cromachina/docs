@@ -41,3 +41,6 @@ Running Clip Studio Paint in Linux
 
 - The mouse cursor has some constant offset from the pen's physical position. This is most noticable when using a screen tablet. Your tablet area needs to be calibrated.
   - Solution: In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
+
+- Resizing UI panels is a bit laggy.
+  - I'm not sure what the issue is (probably Wine overhead), but CSP does have performance issues in general (since CSP version 2 is a single threaded program without any async UI).
