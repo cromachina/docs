@@ -30,11 +30,15 @@ Running Clip Studio Paint in Linux
   - You can simply ignore it: Select "don't show this again" and close the message.
 
 - Popup menus for brush pressure settings quickly disappear; Window geometry is sort of messed up in your desktop; Other weird window issues, etc.:
-  - Running in a Virtual Desktop seems to alleviate these kinds of issues (Bottle -> Settings -> Display -> Advanced Display Settings -> Virtual Desktop). Close CSP and then set the virtual desktop size to 1920x1080 (or whatever your primary display size is) and then run CSP from Bottles on that screen.
+  - Running in a Virtual Desktop seems to alleviate these kinds of issues (Bottle -> Settings -> Display -> Advanced Display Settings -> Virtual Desktop). Close CSP and then set the virtual desktop size to the maximum geometry of all monitors of your monitors, like 3840x1080 if you have 2 1080p monitors side-by-side. Then put the virtual desktop window on your leftmost monitor and make it fullscreen. Your tablet mapping should also be on this leftmost screen. You need the virtual desktop to be the same geometry as your actual desktop or tablet coordinates may not work correctly in this mode. Popups for pressure may fall partly onto the other screen, as well other popups. You can use a single screen resolution for the virtual desktop, but then you need to use `mouse mode in tablet driver settings` in CSP's tablet preferences (but this will make you lose a ton of tablet resolution).
+  - Since these issues are so minimal and using a virtualdesktop brings about other issues, it's probably better to not use a virtual desktop, but the option is there if you really need it.
 
 - Pen has no pressure, despite using and configuring OpenTabletDriver; Or the pen drawing position is offset or seems like it's not even showing up on the canvas:
-  - In Clip Studio Paint: File -> Preferences -> Tablet -> Coordinate detection mode:
-    - Enable `Use mouse mode in tablet driver settings`
+  - In Clip Studio Paint: File -> Preferences -> Tablet:
+    - Enable `Set tablet operation area with application`
+    - Run on all monitors
+    - Operate with whole tablet
+  - This only works well either without a virtual desktop, or with a virtual desktop with the size of your total desktop geometry.
    
 - You suddenly cannot click on anything and it seems like Clip Studio Paint is frozen:
   - Most likely you have a modal popup open (like Manage Fonts) and it's behind the main window (because you clicked on the main window after opening it). You should still be able to move the main window out of the way to close the popup.
