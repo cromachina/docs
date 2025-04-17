@@ -42,17 +42,3 @@ Running Paint Tool SAIv2 in Linux
 
 - The mouse cursor (not the SAI drawing cursor position) has some constant offset from the pen's physical position. This is most noticable when using a screen tablet. Your tablet area needs to be calibrated.
   - Solution: In OpenTabletDriver, install the "Tablet Calibration" plugin and follow the instructions on the plugin's wiki.
-
-- Wine systemd issues: Systemd shutdown or reboot is delayed with "A stop job is running for User Manager...". Sometimes running programs like SAI with wine leaves lingering wine service processes. These seem to delay shutdown with systemd, possibly because of some shutdown ordering issue. You can fix this with a systemd shutdown script that just kills the lingering processes, for example I add this to my NixOS config:
-```nix
-  systemd.services."wine-shutdown" = {
-    enable = true;
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "${pkgs.procps}/bin/pkill -9 .exe";
-    };
-    before = [ "shutdown.target" "reboot.target" "halt.target" ];
-    wantedBy = [ "multi-user.target" ];
-  };
-```
