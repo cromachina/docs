@@ -34,3 +34,6 @@ Running Design Doll in Linux
 
 - Sometimes there is a crash on exit with a COM exception.
   - This error seems to be harmless.
+
+- Switching to another TTY will cause Design Doll to crash.
+  - My guess is that it can't handle the display mode changing. Save your work and close Design Doll before you switch TTYs.
