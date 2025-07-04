@@ -5,6 +5,24 @@ Running Design Doll in Linux
 
 ## Other software to install in Linux
 - Bottles (to configure Wine)
+- 32-bit GPU support packages (including 32-bit Vulkan)
+  - Installing these can vary per distribution and GPU, for example, on NixOS with an AMD GPU:
+```nix
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.amdgpu = {
+    initrd.enable = true;
+    opencl.enable = true;
+    amdvlk.enable = true;
+    amdvlk.support32Bit.enable = true;
+  };
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "amdgpu" ];
+  };
+```
 
 ## Bottle configuration
 - Create a new Bottle with the `Custom` Environment
@@ -12,7 +30,7 @@ Running Design Doll in Linux
 - After finishing the Create step, under Options -> Settings:
   - Components (you may have to install some of these in Bottles main preferences)
     - Runner: `caffe-9.7`
-    - DXVK: `dxvk-2.5.2`
+    - DXVK: `dxvk-2.6.2`
 - Under Options -> Dependencies, install:
   - `dotnet40`
   - `dotnet45`
