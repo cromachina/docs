@@ -55,3 +55,6 @@ Running Design Doll in Linux
 
 - Switching to another TTY will cause Design Doll to crash.
   - My guess is that it can't handle the display mode changing. Save your work and close Design Doll before you switch TTYs.
+ 
+- Cannot import a model with an Import Tag because the file dialog doesn't work correctly. You click on the file to import and nothing happens.
+  - While running in a Virtual Desktop, click on the start menu and select `Run...`, then enter `explorer` to open a file browser. Navigate to your model file and then drag and drop it into Design Doll's window. This will add an Import Tag to the currenctly selected object with the model loaded.
