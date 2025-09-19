@@ -27,6 +27,17 @@ Running Paint Tool SAIv2 in Linux
   - There is a high chance that you will create a corrupted save file and lose your work. Try to save the work to a new file, and close and reopen SAI. If the new file is not corrupted, then that's great and you can continue work. If it is corrupted, well at least your old save should still be fine and hopefully you only lost minutes, instead of days.
   - This probably wont happen unless you hit some serious memory bugs in Wine (or run out of system memory).
 
+- Bottles may sometimes freak out and kill SAI.
+  - Not sure why this happens. Save your work before interacting with Bottles to mitigate the possibility of lost work.
+
+- External clipboard paste into SAI sometimes doesn't work.
+  - For whatever reason, it seems like the copy buffer for Wine has a small, limited size, and copying a large image will not work.
+  - Solution: Screenshots do seem to be small enough to copy and paste. Alternatively, save the file you want to paste to disk and then open it with SAI directly.
+
+- Copying from SAI to the external clipboard doesn't work.
+  - Wine doesn't seem to interact with clipboard events from within SAI.
+  - Alternative: Take a screenshot or export to a file.
+
 - Drawing suddenly shows a "Discharge failed, Fatal" error or something like that. It's not actually fatal, but it's still annoying.
   - Solution: In SAI, go to "Other -> Options -> History and Recovery" and turn off "To suppress memory usage...". Note that this means file recovery doesn't work! Back up your files manually or with periodic copy job!!! I have a script that is meant to capture `sai2` files as they are saved and back up a few at a time to another location. You'll have to change the paths to be relevant for your own system: https://github.com/cromachina/art-scripts/blob/main/auto_backup.py
   - Reason: SAI seems to have an issue with Wine's file system, in this particular case. File recovery within SAI will not work either way.
