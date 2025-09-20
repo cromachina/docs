@@ -46,15 +46,19 @@ Running Design Doll in Linux
   - Under `HKEY_LOCAL_MACHINE/Software/Microsoft/.NETFramework` add a new `String Value` called `InstallRoot` and set its data to the dotnet install location `C:\windows\Microsoft.NET\Framework`
   - This probably happened to me because I was messing around with Wine Mono (don't install this in the Bottle, it doesn't work with Design Doll).
  
-## Other issues
+## Issues
 - Some popup windows may render incorrectly, or just black (usually the exit-save confirmation popup)
   - Running in a Virtual Desktop seems to alleviate these kinds of issues.
 
 - Sometimes there is a crash on exit with a COM exception.
   - This error seems to be harmless.
 
-- Switching to another TTY will cause Design Doll to crash.
-  - My guess is that it can't handle the display mode changing. Save your work and close Design Doll before you switch TTYs.
+- Switching to another TTY will cause Design Doll to crash, or an input device changing, like a bluetooth mouse disconnecting, causes Design Doll to crash.
+  - My guess is that it can't handle the display mode or Xorg changing. Save your work and close Design Doll before you switch TTYs.
+  - Picking a different component setup can fix this issue but introduce other small issues, like UI update artifacts. You'll have to register your program license again after changing this.
+    - Runner: `ge-proton10-15`
+    - DXVK: `dxvk-2.7.1`
+    - The UI artifacts can be mitigated by making the window in the virtual desktop windowed instead of maximized, and then resize the manually to the virtual desktop size.
  
 - Cannot import a model with an Import Tag because the file dialog doesn't work correctly. You click on the file to import and nothing happens.
   - While running in a Virtual Desktop, click on the start menu and select `Run...`, then enter `explorer` to open a file browser. Navigate to your model file and then drag and drop it into Design Doll's window. This will add an Import Tag to the currenctly selected object with the model loaded.
