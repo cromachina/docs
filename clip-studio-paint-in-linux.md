@@ -39,7 +39,10 @@ Running Clip Studio Paint in Linux
     - Run on all monitors
     - Operate with whole tablet
   - This only works well either without a virtual desktop, or with a virtual desktop with the size of your total desktop geometry.
-   
+
+- Pen has no pressure after rebooting with OpenTabletDriver.
+  - OpenTabletDriver lazy loads on the first pen event. Tap your pen on your tablet, and then reopen CSP.
+
 - You suddenly cannot click on anything and it seems like Clip Studio Paint is frozen:
   - Most likely you have a modal popup open (like Manage Fonts) and it's behind the main window (because you clicked on the main window after opening it). You should still be able to move the main window out of the way to close the popup.
 
