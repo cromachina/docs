@@ -23,12 +23,27 @@ Running Design Doll in Linux
     videoDrivers = [ "amdgpu" ];
   };
 ```
+  - NixOS specific AMD GPU issue: If you are using the latest Nix (like unstable), `amdvlk` was removed because it's no longer maintained by AMD. Design Doll fails to start with default RADV drivers, so you can get the `amdvlk` drivers back by pinning a nixpkgs version (assuming you are using a flake system). This is a holdover until RADV works with this (no idea if or when that will happen):
+```nix
+# In your flake.nix
+inputs = {
+  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  nixpkgs-amdvlk.url = "github:nixos/nixpkgs/b21494c0c5716d29bc908fffb4292677e799715b";
+};
 
+# In your configuration.nix
+{ pkgs, lib, ... }@inputs: # inputs from specialAttrs
+{
+  hardware.graphics.extraPackages32 = [
+    inputs.nixpkgs-amdvlk.legacyPackages.${pkgs.system}.driversi686Linux.amdvlk
+  ];
+}
+```
 ## Bottle configuration
 - Create a new Bottle with the `Custom` Environment
   - Set the architecture to `win32` (otherwise dotnet stuff may not run correctly)
 - After finishing the Create step, under Options -> Settings:
-  - Components (you may have to install some of these in Bottles main preferences)
+  - Components (you may have to install some of these in Bottles main preferences, newer versions may also work):
     - Runner: `caffe-9.7`
     - DXVK: `dxvk-2.6.2`
 - Under Options -> Dependencies, install:
